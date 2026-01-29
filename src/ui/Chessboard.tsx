@@ -1,6 +1,7 @@
 import { Chessboard } from "react-chessboard";
 
 type ChessBoardProps = {
+  id: string;
   position?: string;
   size?: number;
   darkSquare?: string;
@@ -14,8 +15,10 @@ type ChessBoardProps = {
   highlightSquares?: Record<string, React.CSSProperties>;
 };
 
+
 function ChessBoard({
-  position = "",
+  id,
+  position = "start",
   size = 420,
   draggable = false,
   darkSquare = "#B58863",
@@ -30,21 +33,21 @@ function ChessBoard({
   return (
     <div style={{ width: size, height: size }}>
       <Chessboard
-        options={{
-          darkSquareStyle: { backgroundColor: darkSquare },
-          lightSquareStyle: { backgroundColor: lightSquare },
+        options = {{
+          id,
           draggingPieceGhostStyle: { opacity: ghostOpacity },
           showNotation: notation,
           canDragPiece: draggable,
-          animationDurationInMs: animationDuration,
-          boardStyle,
           draggingPieceStyle,
           squareStyles: highlightSquares,
         }}
-        // notation={false}
+        boardStyle ={boardStyle}
+        animationDurationInMs={animationDuration}
         position={position}
         boardWidth={size}
         arePiecesDraggable={draggable}
+        customDarkSquareStyle={{ backgroundColor: darkSquare }}
+        customLightSquareStyle={{ backgroundColor: lightSquare }}
       />
     </div>
   );

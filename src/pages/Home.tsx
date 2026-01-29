@@ -1,9 +1,10 @@
 // src/pages/Home.tsx
-import Chessboard from "../ui/Chessboard";
+// import Chessboard from "../ui/Chessboard";
 import SlideDisplay from "../ui/SlideDisplay";
 import { Link } from "react-router-dom";
 import Typing from "../ui/Typing";
 import { motion } from "framer-motion";
+import ChessBoard from "../ui/Chessboard";
 
 function Home() {
   const greetings = [
@@ -57,9 +58,9 @@ function Home() {
         initial={{ opacity: 0, x: 50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.7, delay: 0.4, ease: "easeOut" }}
-        className="w-fit shadow-2xl shadow-black"
+        className="w-fit shadow-2xl shadow-black rounded-xl"
       >
-        <Chessboard lightSquare="white" darkSquare="purple" />
+        <ChessBoard id="HomeBoard" lightSquare="white" darkSquare="purple" />
       </motion.div>
     </motion.div>
   );
